@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 
-class TextFieldWithoutIcon1 extends StatelessWidget {
+class TextFieldWithIcon extends StatelessWidget {
   final String hintText;
 
-  TextFieldWithoutIcon1({Key key, @required this.hintText}) : super(key: key);
+  TextFieldWithIcon({Key key, @required this.hintText}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(

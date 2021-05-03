@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/views/text_field_without_icon.dart';
+import 'package:my_flutter_app/views/homePage.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Material App',
-      home: TextFieldWithoutIcon(),
+      home: HomePage(),
     );
   }
 }
