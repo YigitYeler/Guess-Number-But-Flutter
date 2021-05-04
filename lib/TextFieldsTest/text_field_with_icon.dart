@@ -3,8 +3,10 @@ import 'package:kartal/kartal.dart';
 
 class TextFieldWithIcon extends StatelessWidget {
   final String hintText;
-
-  TextFieldWithIcon({Key key, @required this.hintText}) : super(key: key);
+  final bool isWithIcon;
+  TextFieldWithIcon(
+      {Key key, @required this.isWithIcon, @required this.hintText})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,7 +19,7 @@ class TextFieldWithIcon extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(50.0)),
           elevation: 10,
           shadowColor: Colors.black26,
-          child: buildTextFormFieldWithoutIcon(context, hintText),
+          child: buildTextFormFieldWithoutIcon(context, hintText, isWithIcon),
         ),
       ),
     );
@@ -25,13 +27,13 @@ class TextFieldWithIcon extends StatelessWidget {
 }
 
 TextFormField buildTextFormFieldWithoutIcon(
-    BuildContext context, String hintText) {
+    BuildContext context, String hintText, bool isWithIcon) {
   return TextFormField(
     style: TextStyle(
       height: context.height * 0.002,
     ),
     decoration: InputDecoration(
-      suffixIcon: Icon(Icons.remove_red_eye),
+      suffixIcon: isWithIcon ? Icon(Icons.remove_red_eye) : null,
       filled: true,
       fillColor: Colors.white,
       hintText: hintText,
