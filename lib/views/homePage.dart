@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import 'package:my_flutter_app/views/setting_section.dart';
 import 'package:my_flutter_app/views/white_text_field.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,14 +20,28 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Column(
         children: [
-          WhiteTextField(isWithIcon: true, hintText: "Şifren"),
-          WhiteTextField(isWithIcon: false, hintText: "Şifren"),
+          SettingSection(
+            text: 'Hesap Ayarları',
+            icon: Icons.person,
+          ),
+          SettingSection(
+            text: 'Güvenlik & Şifre',
+            icon: Icons.lock,
+          ),
+          SettingSection(
+            text: 'Bildirim Ayarları',
+            icon: Icons.notifications,
+          ),
+          SettingSection(
+            text: 'Bize puan verin',
+            icon: Icons.star,
+          ),
         ],
       ),
     );
   }
 
-  Center buildCenterBody(BuildContext context) {
+  /*Center buildCenterBody(BuildContext context) {
     return Center(
       child: Container(
         decoration: BoxDecoration(
@@ -67,4 +82,5 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+}*/
 }

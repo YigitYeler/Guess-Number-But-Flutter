@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:kartal/kartal.dart';
+import 'package:my_flutter_app/views/homePage.dart';
 
 class HomeView extends StatefulWidget {
-  HomeView({Key key}) : super(key: key);
+  final Widget routePage;
+  HomeView({Key key, @required this.routePage}) : super(key: key);
 
   @override
   _HomeViewState createState() => _HomeViewState();
@@ -36,7 +39,10 @@ class _HomeViewState extends State<HomeView> {
             buildTextInfo(context, upOrDown),
             buildTextInfo(context, remainingGuess),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => widget.routePage));
+              },
               child: Text('GUESS'),
               style: raisedButtonStyle,
             )
