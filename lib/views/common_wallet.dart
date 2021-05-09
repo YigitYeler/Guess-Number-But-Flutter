@@ -21,45 +21,13 @@ class CommonWallet extends StatelessWidget {
               children: [
                 SizedBox(
                   width: width * 0.7,
-                  child: ListTile(
-                    title: Text(
-                      'Ailem',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
-                    ),
-                    trailing: Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text(
-                            'Toplam Harcama:',
-                            textAlign: TextAlign.end,
-                            style: TextStyle(
-                              fontSize: 10,
-                              color: Color(0xFF848589),
-                            ),
-                          ),
-                          Text(
-                            '900 TL',
-                            textAlign: TextAlign.end,
-                            style: TextStyle(
-                              color: Color(0xFFEBEFF6),
-                              fontSize: 18,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                  child: buildListTileTop(),
                 ),
               ],
             ),
           ),
           Expanded(
-            child: ListView(
+            child: Column(
               children: [
                 buildRowCircleAvatar(),
                 buildPaddingBottomCircleAvatar(),
@@ -71,19 +39,58 @@ class CommonWallet extends StatelessWidget {
     );
   }
 
+  ListTile buildListTileTop() {
+    return ListTile(
+      title: Text(
+        'Ailem',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 20,
+        ),
+      ),
+      trailing: Padding(
+        padding: const EdgeInsets.only(top: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Text(
+              'Toplam Harcama:',
+              textAlign: TextAlign.end,
+              style: TextStyle(
+                fontSize: 10,
+                color: Color(0xFF848589),
+              ),
+            ),
+            Text(
+              '900 TL',
+              textAlign: TextAlign.end,
+              style: TextStyle(
+                color: Color(0xFFEBEFF6),
+                fontSize: 18,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   Padding buildPaddingBottomCircleAvatar() {
     return Padding(
       padding: const EdgeInsets.only(top: 14),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 45),
+          CircleAvatar(
+            radius: 40,
+            backgroundColor: Colors.white,
             child: CircleAvatar(
               radius: 38,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 70),
+          CircleAvatar(
+            radius: 40,
+            backgroundColor: Colors.white,
             child: CircleAvatar(
               radius: 38,
             ),
@@ -95,15 +102,18 @@ class CommonWallet extends StatelessWidget {
 
   Row buildRowCircleAvatar() {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 45),
+        CircleAvatar(
+          radius: 40,
+          backgroundColor: Colors.white,
           child: CircleAvatar(
             radius: 38,
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(left: 70),
+        CircleAvatar(
+          radius: 40,
+          backgroundColor: Colors.white,
           child: CircleAvatar(
             radius: 38,
           ),
