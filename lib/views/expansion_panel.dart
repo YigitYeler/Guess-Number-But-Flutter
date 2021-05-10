@@ -2,51 +2,71 @@ import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 
 class MyExpansionTile extends StatelessWidget {
+  final String imageUrl;
+  final String title;
+  final String date;
+  final String location;
+  final String description;
+  final String amountOfSpending;
+
+  const MyExpansionTile(
+      {Key key,
+      this.imageUrl,
+      @required this.title,
+      @required this.date,
+      @required this.location,
+      @required this.description,
+      @required this.amountOfSpending})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Theme(
       data: ThemeData.light().copyWith(accentColor: Colors.black),
       child: ExpansionTile(
-        leading: CircleAvatar(),
-        title: Text("Elektrik Faturası"),
+        leading: CircleAvatar(
+          backgroundImage: AssetImage(imageUrl),
+        ),
+        title: Text(title),
+        children: [buildPaddingChildren(context)],
+      ),
+    );
+  }
+
+  Padding buildPaddingChildren(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(left: 50),
+      child: Column(
         children: [
-          Padding(
-            padding: EdgeInsets.only(left: 50),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: Column(
-                          children: [
-                            buildRowDetails(Icons.calendar_today, '18.10.2002'),
-                            context.emptySizedHeightBoxLow,
-                            buildRowDetails(Icons.location_on, 'Migros'),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 100,
-                      child: Text(
-                        "Şubat ayında toplam 1200 tl harcandı",
-                        textAlign: TextAlign.end,
-                        maxLines: 3,
-                      ),
-                    ),
-                    Icon(Icons.wallet_membership_rounded)
-                  ],
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: Column(
+                    children: [
+                      buildRowDetails(Icons.calendar_today, date),
+                      context.emptySizedHeightBoxLow,
+                      buildRowDetails(Icons.location_on, location),
+                    ],
+                  ),
                 ),
-                Divider(),
-                Padding(
-                  padding: const EdgeInsets.only(left: 21),
-                  child: buildRowEndDetail(),
-                )
-              ],
-            ),
+              ),
+              SizedBox(
+                width: 100,
+                child: Text(
+                  description,
+                  textAlign: TextAlign.end,
+                  maxLines: 3,
+                ),
+              ),
+              Icon(Icons.wallet_membership_rounded)
+            ],
+          ),
+          Divider(),
+          Padding(
+            padding: const EdgeInsets.only(left: 21),
+            child: buildRowEndDetail(),
           )
         ],
       ),
@@ -78,7 +98,7 @@ class MyExpansionTile extends StatelessWidget {
           child: Text('Harcama Miktarı'),
         ),
         Spacer(),
-        Text("-129 TL")
+        Text(amountOfSpending)
       ],
     );
   }

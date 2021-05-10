@@ -22,8 +22,20 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Column(
         children: [
-          Center(child: CommonWallet())
-          //MyExpansionTile()
+          Center(
+              child: CommonWallet(
+            title: 'Aile',
+            amountOfSpending: '900TL',
+            numberOfPeople: 1,
+          ))
+          //Center(child: CommonWallet())
+          /*MyExpansionTile(
+            title: 'Elektrik Faturası',
+            date: '18.10.2002',
+            amountOfSpending: '-129TL',
+            description: 'Şubat ayında toplam 1220 TL harcandı',
+            location: 'Migros',
+          )*/
           /*SettingSection(
             text: 'Hesap Ayarları',
             icon: Icons.person,

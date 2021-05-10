@@ -45,7 +45,7 @@ TextFormField buildTextFormFieldWithoutIcon(
       fillColor: Colors.white,
       hintText: hintText,
       hintStyle: TextStyle(color: Colors.grey),
-      contentPadding: EdgeInsets.fromLTRB(25, 19, 25, 16),
+      contentPadding: EdgeInsets.all(25),
       enabledBorder: OutlineInputBorder(
         borderSide: BorderSide(color: Colors.white),
         borderRadius: BorderRadius.circular(24),
