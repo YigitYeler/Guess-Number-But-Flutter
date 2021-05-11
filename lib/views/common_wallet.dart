@@ -2,22 +2,27 @@ import 'package:flutter/material.dart';
 
 class CommonWallet extends StatelessWidget {
   final String title;
-
+  final List<String> images;
   final String amountOfSpending;
-  final int numberOfPeople;
+  double count;
 
-  const CommonWallet(
+  CommonWallet(
       {Key key,
+      @required this.images,
       @required this.title,
-      @required this.amountOfSpending,
-      @required this.numberOfPeople})
+      @required this.amountOfSpending})
       : super(key: key);
   bool controlHeight() {
-    if (numberOfPeople < 3) {
+    if (images.length < 3) {
       return false;
     } else {
       return true;
     }
+  }
+
+  bool controlLoop() {
+    count = images.length / 2;
+    return images.length % 2 == 0;
   }
 
   @override
@@ -25,7 +30,7 @@ class CommonWallet extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Container(
-      height: controlHeight() ? height * 0.42 : height * 0.27,
+      height: controlHeight() ? height * 0.32 : height * 0.20,
       width: width * 0.816,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
@@ -50,12 +55,107 @@ class CommonWallet extends StatelessWidget {
               children: [
                 buildRowCircleAvatar(),
                 buildPaddingBottomCircleAvatar(),
+                buildExpandedListView(),
               ],
             ),
           ),
         ],
       ),
     );
+  }
+
+  Expanded buildExpandedListView() {
+    if (images.length > 4 && controlLoop()) {
+      return Expanded(
+        child: ListView.builder(
+          itemCount: count.toInt(),
+          itemBuilder: (context, index) {
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CircleAvatar(
+                    radius: 40,
+                    backgroundColor: Colors.white,
+                    child: CircleAvatar(
+                      radius: 38,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CircleAvatar(
+                    radius: 40,
+                    backgroundColor: Colors.white,
+                    child: CircleAvatar(
+                      radius: 38,
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
+      );
+    } else if (!controlLoop() && images.length > 4) {
+      return Expanded(
+        child: ListView.builder(
+          itemCount: (count + 0.5).toInt(),
+          itemBuilder: (context, index) {
+            if ((count + 0.5).toInt() == index + 1) {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CircleAvatar(
+                      radius: 40,
+                      backgroundColor: Colors.white,
+                      child: CircleAvatar(
+                        radius: 38,
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            } else {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CircleAvatar(
+                      radius: 40,
+                      backgroundColor: Colors.white,
+                      child: CircleAvatar(
+                        radius: 38,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CircleAvatar(
+                      radius: 40,
+                      backgroundColor: Colors.white,
+                      child: CircleAvatar(
+                        radius: 38,
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            }
+          },
+        ),
+      );
+    } else {
+      return Expanded(
+        child: Padding(
+          padding: EdgeInsets.all(0),
+        ),
+      );
+    }
   }
 
   ListTile buildListTileTop() {
@@ -95,7 +195,7 @@ class CommonWallet extends StatelessWidget {
   }
 
   Padding buildPaddingBottomCircleAvatar() {
-    if (numberOfPeople == 4) {
+    if (images.length == 4) {
       return Padding(
         padding: const EdgeInsets.only(top: 14),
         child: Row(
@@ -118,7 +218,7 @@ class CommonWallet extends StatelessWidget {
           ],
         ),
       );
-    } else if (numberOfPeople == 3) {
+    } else if (images.length == 3) {
       return Padding(
         padding: const EdgeInsets.only(top: 14),
         child: Row(
@@ -140,7 +240,7 @@ class CommonWallet extends StatelessWidget {
   }
 
   Row buildRowCircleAvatar() {
-    if (numberOfPeople == 1) {
+    if (images.length == 1) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -153,7 +253,7 @@ class CommonWallet extends StatelessWidget {
           ),
         ],
       );
-    } else if (numberOfPeople == 2 || numberOfPeople > 2) {
+    } else if (images.length == 2 || images.length == 3 || images.length == 4) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [

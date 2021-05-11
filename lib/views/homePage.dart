@@ -23,11 +23,12 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         children: [
           Center(
-              child: CommonWallet(
-            title: 'Aile',
-            amountOfSpending: '900TL',
-            numberOfPeople: 1,
-          ))
+            child: CommonWallet(
+              title: 'Aile',
+              amountOfSpending: '900TL',
+              images: ["sa", "sa", "sa"],
+            ),
+          )
           //Center(child: CommonWallet())
           /*MyExpansionTile(
             title: 'Elektrik Faturası',
