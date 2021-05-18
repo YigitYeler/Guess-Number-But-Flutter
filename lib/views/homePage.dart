@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:my_flutter_app/views/common_wallet.dart';
 import 'package:my_flutter_app/views/expansion_panel.dart';
+import 'package:my_flutter_app/views/grey_mini_container.dart';
 import 'package:my_flutter_app/views/setting_section.dart';
 import 'package:my_flutter_app/views/white_text_field.dart';
 
@@ -22,13 +23,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Column(
         children: [
-          Center(
-            child: CommonWallet(
-              title: 'Aile',
-              amountOfSpending: '900TL',
-              images: ["sa", "sa", "sa"],
-            ),
-          )
+          Center(child: GreyMiniContainer.large())
           //Center(child: CommonWallet())
           /*MyExpansionTile(
             title: 'Elektrik Faturası',
