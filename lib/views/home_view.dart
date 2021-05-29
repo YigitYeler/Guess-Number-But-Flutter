@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:kartal/kartal.dart';
-import 'package:my_flutter_app/views/homePage.dart';
 
 class HomeView extends StatefulWidget {
   final Widget routePage;

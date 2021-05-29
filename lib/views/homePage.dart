@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:my_flutter_app/views/common_wallet.dart';
-import 'package:my_flutter_app/views/expansion_panel.dart';
-import 'package:my_flutter_app/views/grey_mini_container.dart';
-import 'package:my_flutter_app/views/setting_section.dart';
-import 'package:my_flutter_app/views/white_text_field.dart';
+import 'common_wallet.dart';
+import 'expansion_panel.dart';
+import 'grey_mini_container.dart';
+import 'setting_section.dart';
+import 'white_text_field.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);

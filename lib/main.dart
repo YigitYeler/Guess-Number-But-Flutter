@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/views/homePage.dart';
-import 'package:my_flutter_app/views/home_view.dart';
+
+import 'views/get_value_from_textfield.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      home: HomePage(),
+      home: GetValueFromTextField(),
     );
   }
 }
